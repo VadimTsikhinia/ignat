@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    padding: 56px 0 32px;
+    padding: 27px 0 32px;
 }
 
 .textarea {
@@ -38,6 +38,7 @@
 .button:hover {
 
 }
+
 .button:active {
 
 }
