@@ -1,15 +1,17 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react'
 import s from './Greeting.module.css'
+import {keyboardKey} from "@testing-library/user-event";
+import {UserType} from "./HW3";
 
 type GreetingPropsType = {
     name: any // need to fix any
     setNameCallback: any // need to fix any
     addUser: any // need to fix any
     onBlur: any // need to fix any
-    onEnter: any // need to fix any
-    error: any // need to fix any
-    totalUsers: any // need to fix any
-    lastUserName?: any // need to fix any
+    onEnter: (e: KeyboardEvent<HTMLInputElement>)=>void // need to fix any
+    error: string // need to fix any
+    totalUsers: number // need to fix any
+    lastUserName?: string // need to fix any
 }
 
 // презентационная компонента (для верстальщика)
