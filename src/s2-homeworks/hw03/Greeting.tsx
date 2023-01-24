@@ -2,12 +2,14 @@ import React, {ChangeEvent, KeyboardEvent} from 'react'
 import s from './Greeting.module.css'
 import {keyboardKey} from "@testing-library/user-event";
 import {UserType} from "./HW3";
+import {Simulate} from "react-dom/test-utils";
+
 
 type GreetingPropsType = {
-    name: any // need to fix any
-    setNameCallback: any // need to fix any
-    addUser: any // need to fix any
-    onBlur: any // need to fix any
+    name: string // need to fix any
+    setNameCallback: (e: ChangeEvent<HTMLInputElement>)=>void // need to fix any
+    addUser: ()=>void // need to fix any
+    onBlur: ()=>void // need to fix any
     onEnter: (e: KeyboardEvent<HTMLInputElement>)=>void // need to fix any
     error: string // need to fix any
     totalUsers: number // need to fix any
@@ -44,12 +46,12 @@ const Greeting: React.FC<GreetingPropsType> = (
                         id={'hw3-input'}
                         value={name}
                         onChange={setNameCallback}
-                        className={inputClass}
+                        className={`${s.input} ${error ? s.errorInput : ''}`}
                         onKeyDown={onEnter}
                         onBlur={onBlur}
                     />
                     <div id={'hw3-error'} className={s.error}>
-                        {error}
+                        {error ? error: ''}
                     </div>
                 </div>
 
