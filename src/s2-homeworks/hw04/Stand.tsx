@@ -56,6 +56,7 @@ const Stand = () => {
                 {/*задизэйбленная кнопка:*/}
                 <div>
                     <SuperButton
+                        className={s.buttons}
                         id={'hw4-super-button-disabled'}
                         xType={'red'}
                         disabled
