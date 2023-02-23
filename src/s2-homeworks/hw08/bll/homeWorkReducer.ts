@@ -7,7 +7,7 @@ type ActionType =
 export const homeWorkReducer = (state: UserType[], action: ActionType): UserType[] => { // need to fix any
     switch (action.type) {
         case 'SORT-UP-NAME': { // by name
-            const newState: UserType[] = [...state]
+            const newState = [...state]
             if (action.paylod.sort === 'up') {
                 return newState.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
             }
@@ -17,7 +17,7 @@ export const homeWorkReducer = (state: UserType[], action: ActionType): UserType
             return newState // need to fix
         }
         case 'CHECK-AGE-18': {
-            const newState:UserType[] = [...state]
+            const newState = [...state]
             return newState.filter(f=>f.age >= action.paylod.age) // need to fix
         }
         default:

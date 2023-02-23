@@ -17,12 +17,12 @@ beforeEach(() => {
 
 test('sort name up', () => {
     const newState = homeWorkReducer(initialState, upNameAC('up'))
-
+    expect(newState.length).toBe(6)
     expect(newState[0]._id).toBe(1)
 })
 test('sort name down', () => {
     const newState = homeWorkReducer(initialState, upNameAC('down'))
-
+    expect(newState.length).toBe(6)
     expect(newState[0]._id).toBe(0)
 })
 test('check age 18', () => {

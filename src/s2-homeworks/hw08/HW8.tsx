@@ -35,20 +35,20 @@ const HW8 = () => {
 
     const sortUp = () => {
         setPeople(
-            homeWorkReducer(people, upNameAC('up'))
+            homeWorkReducer(initialPeople, upNameAC('up'))
         ) // в алфавитном порядке a.name > b.name
         setCurrentSort('up')
     }
 
     const sortDown = () => {
         setPeople(
-            homeWorkReducer(people, upNameAC('down'))
+            homeWorkReducer(initialPeople, upNameAC('down'))
         ) // в обратном порядке a.name < b.name}
         setCurrentSort('down')
     }
     const check18 = () => {
         setPeople(
-            homeWorkReducer(people, checkAge18AC())
+            homeWorkReducer(initialPeople, checkAge18AC())
         ) // совершеннолетние
         setCurrentSort('18')
     }
