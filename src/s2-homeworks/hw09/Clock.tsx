@@ -9,15 +9,11 @@ function Clock() {
     const [date, setDate] = useState<Date>(new Date(restoreState('hw9-date', Date.now())))
     const [show, setShow] = useState<boolean>(false)
 
-    console.log(`меняется ${date}`)
-    const [status, setsStatus] = useState<boolean>(false)
 
     const start = () => {
-        console.log(666)
-        setsStatus(true)
-
+        stop()
         const id = +setInterval(() => {
-            setDate(new Date(restoreState('hw9-date', Date.now())))
+            setDate(new Date())
         }, 1000)
 
         setTimerId(id)
@@ -28,23 +24,16 @@ function Clock() {
     }
 
     const stop = () => {
-        setsStatus(false)
-        if (timerId) {
-            clearInterval(timerId)
-            setTimerId(undefined)
-        }
+        clearInterval(timerId)
+        setTimerId(undefined)
         // пишут студенты // поставить часы на паузу, обнулить ид таймера (timerId <- undefined)
     }
 
     const onMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => { // пишут студенты // показать дату если наведена мышка
-        if (e.currentTarget) {
             setShow(true)
-        }
     }
     const onMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => { // пишут студенты // спрятать дату если мышка не наведена
-        if (e.relatedTarget) {
             setShow(false)
-        }
     }
 
     let formatterTime = new Intl.DateTimeFormat("ru", {
@@ -54,19 +43,19 @@ function Clock() {
     });
     const stringTime = formatterTime.format(date)// часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01)
     // пишут студенты
-    let formatterDateMonth = new Intl.DateTimeFormat("en", {
-        month: "long"
-    });
+    let formatterDateMonth = new Intl.DateTimeFormat("ru");
     const stringDate = formatterDateMonth.format(date) || <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты
     // 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
 
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
-    let formatterDate = new Intl.DateTimeFormat("en", {
+    let formatterDate = new Intl.DateTimeFormat("en-US", {
         weekday: "long",
     });
     const stringDay = formatterDate.format(date) || <br/>  // пишут студенты '888date->day'
-    let formatterMonth = new Intl.DateTimeFormat("ru")
+    let formatterMonth = new Intl.DateTimeFormat("en-US", {
+        month:"long"
+    })
     const stringMonth = formatterMonth.format(date) || <br/> // пишут студенты
 
     return (
@@ -101,14 +90,14 @@ function Clock() {
             <div className={s.buttonsContainer}>
                 <SuperButton
                     id={'hw9-button-start'}
-                    disabled={status} // пишут студенты // задизэйблить если таймер запущен
+                    disabled={!!timerId} // пишут студенты // задизэйблить если таймер запущен
                     onClick={start}
                 >
                     start
                 </SuperButton>
                 <SuperButton
                     id={'hw9-button-stop'}
-                    disabled={!status} // пишут студенты // задизэйблить если таймер не запущен
+                    disabled={!timerId} // пишут студенты // задизэйблить если таймер не запущен
                     onClick={stop}
                 >
                     stop
