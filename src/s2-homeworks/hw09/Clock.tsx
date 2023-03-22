@@ -9,31 +9,23 @@ function Clock() {
     const [date, setDate] = useState<Date>(new Date(restoreState('hw9-date', Date.now())))
     const [show, setShow] = useState<boolean>(false)
 
-    // console.log(`меняется ${date}`)
+    console.log(`меняется ${date}`)
     const [status, setsStatus] = useState<boolean>(false)
+
     const start = () => {
+        console.log(666)
         setsStatus(true)
 
         const id = +setInterval(() => {
             setDate(new Date(restoreState('hw9-date', Date.now())))
         }, 1000)
+
         setTimerId(id)
 
         // пишут студенты // запустить часы (должно отображаться реальное время, а не +1)
         // сохранить ид таймера (https://learn.javascript.ru/settimeout-setinterval#setinterval)
 
     }
-
-
-    // if (status) {
-    //     const interval = setInterval(() => {
-    //         setDate(new Date(restoreState('hw9-date', Date.now())))
-    //         if (status) {
-    //             clearInterval(interval)
-    //         }
-    //     }, 10)
-    // }
-
 
     const stop = () => {
         setsStatus(false)
