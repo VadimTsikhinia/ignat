@@ -47,7 +47,7 @@ function HW11() {
                             // сделать так чтоб value1/2 изменялось // пишет студент
                             value={[value1, value2]}
                             onChange={change}
-                            max={value2}
+                            // max={value2}
                         />
                         <span id={'hw11-value-2'} className={s.number}>{value2}</span>
                     </div>
